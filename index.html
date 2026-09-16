@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Multiplex Booking Desk</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">CineMax Multiplex</p>
+          <h1>Booking Counter</h1>
+        </div>
+        <div class="status-pill" id="statusPill">Live availability</div>
+      </header>
+
+      <main class="layout">
+        <section class="panel booking-panel">
+          <div class="movie-header">
+            <div>
+              <p class="movie-label">Now showing</p>
+              <h2 id="movieTitle">Movie selection</h2>
+            </div>
+            <div class="screen-tag" id="screenTag">Screen</div>
+          </div>
+
+          <div class="field-row">
+            <label for="showtimeSelect">Showtime</label>
+            <select id="showtimeSelect"></select>
+          </div>
+
+          <div class="field-row toggles">
+            <label class="checkbox-wrap">
+              <input type="checkbox" id="festivalDiscount" />
+              <span>Festival flat discount</span>
+            </label>
+
+            <label class="checkbox-wrap">
+              <input type="checkbox" id="memberDiscount" />
+              <span>Member extra discount</span>
+            </label>
+          </div>
+
+          <div class="import-panel">
+            <div class="import-header">
+              <div>
+                <p class="import-kicker">Data import</p>
+                <h3>Seat class price import</h3>
+              </div>
+              <button id="importButton" type="button" class="secondary-button">Clean & import</button>
+            </div>
+
+            <div class="import-format-note">
+              <span>Format</span>
+              <strong>Class Name, Price</strong>
+            </div>
+
+            <textarea id="seatPriceInput" rows="8" spellcheck="false">silver, ₹149.00
+Gold, 219
+gold, 219.00
+Recliner, ₹289.00
+silver, 149
+, 
+-50, 100
+VIP, 
+Platinum, 499
+recliner, ₹289
+Gold, 219.00</textarea>
+
+            <div id="importReport" class="import-report"></div>
+          </div>
+
+          <div class="tier-list" id="tierList"></div>
+
+          <div class="seat-map-panel">
+            <div class="screen">SCREEN</div>
+            <div id="seatMap" class="seat-map" aria-label="Seat map"></div>
+            <div class="seat-legend">
+              <span><i class="legend-box available"></i> Available</span>
+              <span><i class="legend-box selected"></i> Selected</span>
+              <span><i class="legend-box booked"></i> Booked</span>
+            </div>
+          </div>
+
+          <div class="notice" id="bookingNotice">
+            Select your seats to see the live total.
+          </div>
+        </section>
+
+        <aside class="panel summary-panel">
+          <h2>Bill Summary</h2>
+          <div class="summary-body">
+            <div id="ticketBreakdown" class="breakdown"></div>
+            <div class="summary-due">
+              <div class="line total-line">
+                <span>Total</span>
+                <strong id="totalAmount">₹0.00</strong>
+              </div>
+            </div>
+          </div>
+
+          <form id="checkoutForm" class="checkout-form">
+            <div class="field-stack">
+              <label>
+                <span>Customer name</span>
+                <input id="customerName" name="customerName" type="text" placeholder="Enter full name" required />
+              </label>
+
+              <label>
+                <span>Email</span>
+                <input id="customerEmail" name="customerEmail" type="email" placeholder="name@email.com" required />
+              </label>
+
+              <label>
+                <span>Phone</span>
+                <input id="customerPhone" name="customerPhone" type="tel" placeholder="+91 98765 43210" required />
+              </label>
+            </div>
+          </form>
+
+          <button id="bookButton" class="primary-button" type="button">
+            Confirm booking
+          </button>
+
+          <div id="receiptPanel" class="receipt-panel hidden">
+            <div class="receipt-header">
+              <div>
+                <p class="receipt-label">Receipt</p>
+                <h3>CineMax Booking</h3>
+              </div>
+              <button id="printReceiptBtn" class="secondary-button" type="button">Print</button>
+            </div>
+
+            <div id="receiptContent" class="receipt-content"></div>
+          </div>
+        </aside>
+      </main>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
